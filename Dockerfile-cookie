@@ -1,0 +1,7 @@
+FROM payara/micro
+
+COPY target/*.war ${DEPLOY_DIR}/
+COPY key.p12 /opt/key.p12
+
+ENTRYPOINT ["java","-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=90.0", "-Dmp.jwt.token.header=Cookie","-jar", "payara-micro.jar","--contextroot", "/"]
+CMD ["--deploymentDir", "/opt/payara/deployments"]

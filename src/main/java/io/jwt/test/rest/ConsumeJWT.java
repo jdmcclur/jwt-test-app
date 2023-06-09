@@ -21,7 +21,7 @@ public class ConsumeJWT {
   @GET
   @Path("/consumeJWT")
   @Produces("text/plain")
-  @RolesAllowed({"user"})
+  @RolesAllowed({"group"})
   public Response consumeJWT() {
     try {
       return Response.ok(jwt.getSubject()).build();
